@@ -24,11 +24,13 @@ module.exports = {
   */
   styleResources: {
     scss: [
-      './assets/styles/variables/theme.scss'
+      './assets/styles/variables/theme.scss',
     ]
   },
   css: [
-    '~/assets/scss/main.scss'
+    '~/assets/scss/main.scss',
+    'bootstrap-css-only/css/bootstrap.min.css',
+    'mdbvue/build/css/mdb.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -50,6 +52,9 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
+    transpile: [
+      'mdbvue'
+    ]
   }
 }

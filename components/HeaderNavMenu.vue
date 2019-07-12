@@ -2,32 +2,38 @@
   <nav>
     <ul class="Menu">
       <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/guide">
-          <!--{{ $store.state.lang.links.guide }}-->
-          Guide
-        </nuxt-link>
-      </li>
-      <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/api">
+        <nuxt-link class="Menu__Item__Link" to="/">
           <!--{{ $store.state.lang.links.api }}-->
-          API
+         Home
         </nuxt-link>
       </li>
       <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/examples">
-          <!--{{ $store.state.lang.links.examples }}-->
-          Examples
+        <nuxt-link class="Menu__Item__Link" to="/login">
+          <!--{{ $store.state.lang.links.guide }}-->
+          Login
         </nuxt-link>
       </li>
-      <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/faq">
-          <!--{{ $store.state.lang.links.faq }}-->
-          Fac
-        </nuxt-link>
-      </li>
-      <li class="Menu__Item">
-        <nuxt-header-nav-menu-dropdown :dropdownList="dropdownList"  />
-      </li>
+      <!--<li class="Menu__Item">-->
+        <!--<nuxt-link class="Menu__Item__Link" to="/api">-->
+          <!--&lt;!&ndash;{{ $store.state.lang.links.api }}&ndash;&gt;-->
+          <!--API-->
+        <!--</nuxt-link>-->
+      <!--</li>-->
+      <!--<li class="Menu__Item">-->
+        <!--<nuxt-link class="Menu__Item__Link" to="/examples">-->
+          <!--&lt;!&ndash;{{ $store.state.lang.links.examples }}&ndash;&gt;-->
+          <!--Examples-->
+        <!--</nuxt-link>-->
+      <!--</li>-->
+      <!--<li class="Menu__Item">-->
+        <!--<nuxt-link class="Menu__Item__Link" to="/faq">-->
+          <!--&lt;!&ndash;{{ $store.state.lang.links.faq }}&ndash;&gt;-->
+          <!--Fac-->
+        <!--</nuxt-link>-->
+      <!--</li>-->
+      <!--<li class="Menu__Item">-->
+        <!--<nuxt-header-nav-menu-dropdown :dropdownList="dropdownList"  />-->
+      <!--</li>-->
     </ul>
   </nav>
 </template>
