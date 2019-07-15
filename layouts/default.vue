@@ -21,6 +21,12 @@
         return this.$store.state.visibleHeader
       }
     },
+    mounted(){
+      console.log('DEFAULT mounted')
+      if (!localStorage.getItem('token')) {
+        return this.$router.push({path: '/'})
+      }
+    },
     methods: {
       setStore() {
         if (this.$store.state.visibleHeader) this.$store.commit('toggle', 'visibleHeader')

@@ -3,11 +3,11 @@
     <div id="login">
         <mdb-card>
             <mdb-card-body>
-                <form>
+                <form @submit="sendLogin($event)">
                     <p class="h4 text-center mb-4">Sign in</p>
                     <div class="grey-text">
-                        <mdb-input label="Your email" icon="envelope" type="email"/>
-                        <mdb-input label="Your password" icon="lock" type="password"/>
+                        <mdb-input v-model="login.email" label="Your email" icon="envelope" type="email"/>
+                        <mdb-input v-model="login.password" label="Your password" icon="lock" type="password"/>
                     </div>
                     <div class="text-center">
                         <mdb-btn color="primary">Login</mdb-btn>
@@ -23,12 +23,42 @@
 
 <script>
     import { mdbInput, mdbBtn , mdbCard, mdbCardBody} from 'mdbvue';
+    import axiosService from '../../services/axiosService'
+
     export default {
         name: "index",
         components: {
             mdbInput,
             mdbBtn, mdbCard, mdbCardBody
         },
+        data(){
+            return {
+                login: {
+                    email: null,
+                    password: null
+                },
+
+            }
+        },
+        methods:{
+            async sendLogin(e){
+                e.preventDefault()
+                try {
+                    const res = await axiosService.post('api/user/login',this.login)
+                    if(res.status == 200){
+                        localStorage.setItem('token',res.data.token)
+                        this.$router.push({path: '/about'})
+                    }
+                    console.log(res.status)
+
+                } catch (err) {
+                    commit('SET_USER_ERROR', err)
+                }
+                // await axiosService.post('api/user/login',this.login)
+
+            }
+        }
+
     }
 </script>
 

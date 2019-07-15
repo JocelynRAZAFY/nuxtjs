@@ -8,9 +8,25 @@
         </nuxt-link>
       </li>
       <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/login">
+        <nuxt-link v-if="isConnected" class="Menu__Item__Link" to="/logout">
+          <!--{{ $store.state.lang.links.guide }}-->
+           Logout
+        </nuxt-link>
+        <nuxt-link v-else class="Menu__Item__Link" to="/login">
           <!--{{ $store.state.lang.links.guide }}-->
           Login
+        </nuxt-link>
+      </li>
+      <li class="Menu__Item">
+        <nuxt-link class="Menu__Item__Link" to="/about">
+          <!--{{ $store.state.lang.links.guide }}-->
+          About
+        </nuxt-link>
+      </li>
+      <li class="Menu__Item">
+        <nuxt-link class="Menu__Item__Link" to="/personne">
+          <!--{{ $store.state.lang.links.guide }}-->
+          Personne
         </nuxt-link>
       </li>
       <!--<li class="Menu__Item">-->
@@ -76,6 +92,18 @@ export default {
         }
       ]
     }
+  },
+  computed:{
+    isConnected(){
+      if(localStorage.getItem('token')){
+        return true
+      }else {
+        return false
+      }
+    }
+  },
+  methods:{
+
   }
 }
 </script>
