@@ -46,7 +46,7 @@
                     const res = await axiosService.post('api/user/login',this.login)
                     if(res.status == 200){
                         localStorage.setItem('token',res.data.token)
-                        this.$router.push({path: '/todos'})
+                        this.$router.push({path: '/profile'})
                     }
                   //  console.log(res.status)
 

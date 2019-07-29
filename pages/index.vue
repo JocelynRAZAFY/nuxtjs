@@ -27,7 +27,7 @@ export default {
                 'title': 'title 1',
                 'links': [
                   {
-                    'to': 'link to 1',
+                    'to': '/personne',
                     'name': 'link name 1',
                     'contents': [
                       {

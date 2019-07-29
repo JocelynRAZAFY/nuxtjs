@@ -19,14 +19,21 @@
                 return redirect('/')
             }
         },
-        asyncData(){
-            return axiosService.get('api/back/user/datas')
-                .then((res) => {
-                    console.log(res.data.data)
-                    return {
-                        datas: res.data.data
-                    }
-                })
+        asyncData({ store, redirect }){
+            if (!toolsService.hasToken()) {
+                return redirect('/')
+            }else {
+                return axiosService.get('api/back/user/datas')
+                    .then((res) => {
+                        console.log(res.data.data)
+                        return {
+                            datas: res.data.data
+                        }
+                    })
+                    .catch((err) =>{
+                        return redirect('/')
+                    })
+            }
         },
     }
 </script>
