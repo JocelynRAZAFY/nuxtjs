@@ -15,7 +15,6 @@
                 </form>
             </mdb-card-body>
         </mdb-card>
-
     </div>
 
     <!-- Material form login -->
@@ -47,15 +46,13 @@
                     const res = await axiosService.post('api/user/login',this.login)
                     if(res.status == 200){
                         localStorage.setItem('token',res.data.token)
-                        this.$router.push({path: '/about'})
+                        this.$router.push({path: '/todos'})
                     }
-                    console.log(res.status)
+                  //  console.log(res.status)
 
                 } catch (err) {
                     commit('SET_USER_ERROR', err)
                 }
-                // await axiosService.post('api/user/login',this.login)
-
             }
         }
 
@@ -65,7 +62,15 @@
 <style scoped>
     #login{
         margin: auto;
-        margin-top: 15%;
+        margin-top: 10%;
         width: 30%;
     }
+
+    @media (max-width: 406px) {
+        #login{
+            margin-top: 40%;
+            width: 90%;
+        }
+    }
+
 </style>

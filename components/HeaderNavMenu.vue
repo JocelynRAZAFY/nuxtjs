@@ -8,7 +8,7 @@
         </nuxt-link>
       </li>
       <li class="Menu__Item">
-        <nuxt-link v-if="isConnected" class="Menu__Item__Link" to="/logout">
+        <nuxt-link v-if="isToken" class="Menu__Item__Link" to="/logout">
           <!--{{ $store.state.lang.links.guide }}-->
            Logout
         </nuxt-link>
@@ -18,15 +18,21 @@
         </nuxt-link>
       </li>
       <li class="Menu__Item">
-        <nuxt-link class="Menu__Item__Link" to="/about">
-          <!--{{ $store.state.lang.links.guide }}-->
-          About
-        </nuxt-link>
-      </li>
-      <li class="Menu__Item">
         <nuxt-link class="Menu__Item__Link" to="/personne">
           <!--{{ $store.state.lang.links.guide }}-->
           Personne
+        </nuxt-link>
+      </li>
+      <li class="Menu__Item">
+        <nuxt-link class="Menu__Item__Link" to="/profile">
+          <!--{{ $store.state.lang.links.guide }}-->
+          Profile
+        </nuxt-link>
+      </li>
+      <li class="Menu__Item">
+        <nuxt-link class="Menu__Item__Link" to="/todos">
+          <!--{{ $store.state.lang.links.guide }}-->
+          Todos
         </nuxt-link>
       </li>
       <!--<li class="Menu__Item">-->
@@ -56,6 +62,7 @@
 
 <script>
 import NuxtHeaderNavMenuDropdown from '../components/HeaderNavMenuDropdown.vue'
+import toolsService from '../services/toolsService'
 
 export default {
   components: {
@@ -90,20 +97,29 @@ export default {
           path: 'https://vuejobs.com/?ref=nuxtjs',
           blank: true
         }
-      ]
+      ],
+      isToken: false
     }
+  },
+  created(){
+    this.token = localStorage.getItem('token')
+  },
+  mounted(){
+    console.log('HEADER mounted')
+    this.isConnected()
   },
   computed:{
-    isConnected(){
-      if(localStorage.getItem('token')){
-        return true
-      }else {
-        return false
-      }
-    }
+
   },
   methods:{
-
+    isConnected(){
+      console.log('HeaderNavMenu watch methods isConnected')
+      this.isToken = toolsService.hasToken()
+    }
+  },
+  watch: {
+    $route: 'isConnected',
+    isToken(){}
   }
 }
 </script>

@@ -13,22 +13,20 @@
       Header,
       EventInfo
     },
-    watch: {
-      $route: 'setStore'
-    },
     computed: {
       visible() {
         return this.$store.state.visibleHeader
       }
     },
     mounted(){
-      console.log('DEFAULT mounted')
-      if (!localStorage.getItem('token')) {
-        return this.$router.push({path: '/'})
-      }
+      // console.log('DEFAULT mounted')
+      // if (!localStorage.getItem('token')) {
+      //   return this.$router.push({path: '/'})
+      // }
     },
     methods: {
-      setStore() {
+      setStoreApp() {
+        console.log('DEFAULT methods setStoreApp')
         if (this.$store.state.visibleHeader) this.$store.commit('toggle', 'visibleHeader')
         if (this.$store.state.visibleAffix) this.$store.commit('toggle', 'visibleAffix')
       }
@@ -57,6 +55,9 @@
         htmlAttrs: { lang: this.$store.state.locale },
         link
       }
+    },
+    watch: {
+      $route: 'setStoreApp'
     }
   }
 </script>
